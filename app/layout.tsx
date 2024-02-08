@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,7 +27,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={poppins.variable}>{children}</body>
+        <body className={poppins.variable}>
+          <EdgeStoreProvider>{children}</EdgeStoreProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
